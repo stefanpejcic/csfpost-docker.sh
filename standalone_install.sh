@@ -1,5 +1,14 @@
 #!/bin/bash
 
+
+
+read_email_address() {
+    email=$(grep -E "^e-mail=" /etc/openpanel/openpanel/conf/openpanel.config | cut -d "=" -f2)
+    echo "$email"
+}
+
+
+
 # Install CSF
 wget https://download.configserver.com/csf.tgz
 tar -xzf csf.tgz
@@ -30,6 +39,11 @@ done
 # Disable CSF testing mode
 sed -i 's/TESTING = "1"/TESTING = "0"/' /etc/csf/csf.conf
 
+# Set email address for CSF alerts if not already set in openpanel.config
+email_address=$(read_email_address)
+if [[ -n "$email_address" ]]; then
+    sed -i "s/LF_ALERT_TO = \"\"/LF_ALERT_TO = \"$email_address\"/" /etc/csf/csf.conf
+fi
 
 # Restart services
 service ufw stop
@@ -44,4 +58,4 @@ service admin restart
 
 
 # Check status
-
+csf -s
