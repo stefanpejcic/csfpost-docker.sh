@@ -3,11 +3,14 @@
 
 edit docker daemon json
 
+```
+"iptables": false
+```
 
-
-
-
+```
 cp csfpost.sh /usr/local/csf/bin/csfpost.sh
+```
+
 
 
 restart both
