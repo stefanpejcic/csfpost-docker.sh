@@ -1,7 +1,7 @@
 # csfpost-docker.sh
 Make 🐳 Docker play nice with 🧱ConfigServer Firewall
 
-Since both Docker an CSF edit iptables, ports exposed by docker endup accessible wven if not opened in csf!
+Since both Docker an CSF edit iptables, ports exposed by docker endup accessible even if not opened in csf!
 
 This is my take to make Docker play nice with CSF by:
 
