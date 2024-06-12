@@ -57,7 +57,7 @@ set_csf_email_address() {
 # Function to restart services
 restart_services() {
     service ufw stop
-    service ufw disable
+    ufw disable
     service docker restart
     csf -r
 }
