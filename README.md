@@ -1,5 +1,5 @@
 # csfpost-docker.sh
-Make Docker play nice with ComfigServer Firewall
+Make 🐳 Docker play nice with 🧱ConfigServer Firewall
 
 Since both Docker an CSF edit iptables, ports exposed by docker endup accessible wven if not opened in csf!
 
