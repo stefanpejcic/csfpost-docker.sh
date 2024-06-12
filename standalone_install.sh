@@ -42,8 +42,10 @@ read_ufw_rules() {
 }
 
 # Function to disable CSF testing mode
-disable_csf_testing_mode() {
+edit_csf_conf() {
     sed -i 's/TESTING = "1"/TESTING = "0"/' /etc/csf/csf.conf
+    sed -i 's/ETH_DEVICE_SKIP = ""/ETH_DEVICE_SKIP = "docker0"/' /etc/csf/csf.conf
+    sed -i 's/DOCKER = "0"/DOCKER = "1"/' /etc/csf/csf.conf
 }
 
 # Function to set email address for CSF alerts if not already set in openpanel.config
@@ -82,7 +84,7 @@ install_csf
 disable_docker_iptables
 add_csf_post
 read_ufw_rules
-disable_csf_testing_mode
+edit_csf_conf
 set_csf_email_address
 restart_services
 copy_files_to_openpanel
