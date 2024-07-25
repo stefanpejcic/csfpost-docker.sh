@@ -62,5 +62,10 @@ done
 # Combine header, dynamic body, and footer
 output="$output_header$output_body$output_footer"
 
+
+#fallback..
+echo "Restarting Docker.."
+service docker restart
+
 # Write the output to csfpost.sh
 eval "$output"
