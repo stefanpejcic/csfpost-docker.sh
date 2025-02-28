@@ -66,8 +66,6 @@ output="$output_header$output_body$output_footer"
 #fallback..
 echo "Restarting Docker.."
 service docker restart
-echo "Regenerating /etc/hosts file.."
-opencli server-recreate_hosts --after-docker
 
 # Write the output to csfpost.sh
 eval "$output"
